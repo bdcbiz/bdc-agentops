@@ -61,4 +61,3 @@ python3 -m unittest discover -s tests
 This is a policy and workflow layer. Runtime token counts can be missing or
 approximate, so the usage ledger distinguishes measured telemetry, estimates, and
 confirmed billing.
-# bdc-agentops
