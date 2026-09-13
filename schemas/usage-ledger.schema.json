@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/agent-governor/usage-ledger-v1.json",
+  "$id": "https://bdcbiz.com/schemas/bdc-agentops/usage-ledger-v1.json",
   "title": "Agent usage ledger",
   "type": "object",
   "required": ["version", "task_id", "manager", "agents"],

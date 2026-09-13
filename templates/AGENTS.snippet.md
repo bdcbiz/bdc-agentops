@@ -1,6 +1,6 @@
 ## Agent governance
 
-Before model selection or delegation, load the `agent-governor` skill and apply
+Before model selection or delegation, load the `bdc-agentops` skill and apply
 its economy-first policy. The current project's product and security rules remain
 authoritative.
 

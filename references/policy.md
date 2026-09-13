@@ -3,7 +3,7 @@
 ## Precedence and scope
 
 The user's current request and applicable project instructions determine the work
-scope. Agent Governor cannot weaken product, security, privacy, approval, or
+scope. BDC AgentOps cannot weaken product, security, privacy, approval, or
 repository rules. Delegation changes who performs approved work, not what work is
 authorized.
 

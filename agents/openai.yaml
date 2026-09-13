@@ -1,6 +1,6 @@
 interface:
-  display_name: "Agent Governor"
+  display_name: "BDC AgentOps"
   short_description: "Control agent routing, cost, and permissions"
-  default_prompt: "Use $agent-governor to route this work under the economy-first cost policy."
+  default_prompt: "Use $bdc-agentops to route this work under BDC's economy-first cost policy."
 policy:
   allow_implicit_invocation: true

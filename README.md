@@ -1,6 +1,6 @@
-# Agent Governor
+# BDC AgentOps
 
-Agent Governor is a portable policy layer for AI coding workflows. It keeps a
+BDC AgentOps is BDC's portable policy layer for AI coding workflows. It keeps a
 manager agent in control, delegates only when useful, and blocks expensive or
 unknown-cost model escalation until the user explicitly approves it.
 

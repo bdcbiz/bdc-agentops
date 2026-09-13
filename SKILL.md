@@ -1,9 +1,9 @@
 ---
-name: agent-governor
+name: bdc-agentops
 description: Govern model choice, subagent delegation, permissions, and usage across AI coding workflows. Use before selecting models, spawning agents, parallelizing work, or escalating model cost.
 ---
 
-# Agent Governor
+# BDC AgentOps
 
 Apply this skill as a resource-governance layer. Project instructions still decide
 what may be built; this skill decides whether and how agents may be delegated.

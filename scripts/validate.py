@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate Agent Governor's safety-critical configuration without dependencies."""
+"""Validate BDC AgentOps safety-critical configuration without dependencies."""
 
 from __future__ import annotations
 
@@ -103,7 +103,7 @@ def main() -> int:
         for error in errors:
             print(f"ERROR: {error}", file=sys.stderr)
         return 1
-    print("Agent Governor policy validation passed.")
+    print("BDC AgentOps policy validation passed.")
     return 0
 
 

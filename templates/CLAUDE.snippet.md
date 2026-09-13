@@ -1,6 +1,6 @@
 ## Agent governance and model cost
 
-Load the `agent-governor` skill before selecting a model, delegating, or creating
+Load the `bdc-agentops` skill before selecting a model, delegating, or creating
 subagents. Existing project rules determine the work; this layer controls agent
 resources and cannot weaken security or approval boundaries.
 

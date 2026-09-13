@@ -1,4 +1,4 @@
-# AGENTS.md — Agent Governor repository
+# AGENTS.md — BDC AgentOps repository
 
 Read `SKILL.md` and `references/policy.md` before changing routing, approval,
 delegation, permission, or usage behavior.
