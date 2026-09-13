@@ -26,6 +26,7 @@ def validate() -> list[str]:
         "schemas/usage-ledger.schema.json",
         "templates/AGENTS.snippet.md",
         "templates/CLAUDE.snippet.md",
+        "scripts/install.py",
     ]
     for path in required:
         if not (ROOT / path).is_file():
@@ -37,6 +38,7 @@ def validate() -> list[str]:
     routing = load_json("references/routing.json")
     limits = routing.get("limits", {})
     cost = routing.get("cost_policy", {})
+    consent = routing.get("execution_mode_consent", {})
     codex = routing.get("runtimes", {}).get("codex", {})
     workers = codex.get("workers", {})
 
@@ -66,6 +68,21 @@ def validate() -> list[str]:
         errors.append("higher-cost service tiers must require explicit approval")
     if routing.get("default_mode") != "economy":
         errors.append("default mode must remain economy")
+    if consent.get("required_before_substantive_project_work") is not True:
+        errors.append("execution-mode consent must precede substantive project work")
+    if consent.get("choice_scope") != "single_task":
+        errors.append("execution-mode consent must be task-specific")
+    if consent.get("no_response_action") != "wait":
+        errors.append("silence must not authorize an execution mode")
+    forbidden_before_consent = set(consent.get("forbidden_before_consent", []))
+    for action in {
+        "inspect_feature_implementation",
+        "run_tests",
+        "edit_files",
+        "external_actions",
+    }:
+        if action not in forbidden_before_consent:
+            errors.append(f"pre-consent policy must forbid: {action}")
 
     required_limits = {
         "max_concurrent_workers": 2,

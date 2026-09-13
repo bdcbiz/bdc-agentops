@@ -27,6 +27,23 @@ If approval is declined or unavailable, continue with the cheaper safe fallback
 when it can satisfy the task. Otherwise report the limitation without starting
 the protected model.
 
+## Execution-mode consent
+
+For project work that needs tools, obtain an explicit execution-mode choice before
+substantive work. A shallow bootstrap may read applicable instruction files,
+identify the repository and worktree state, and list enough top-level files to
+describe the options. It may not inspect feature code, run tests, edit files, or
+contact external systems.
+
+Present Solo and Delegated economy with the manager/workers, bounded assignments,
+relative usage impact, and a recommendation. Wait for the user to choose. The
+choice is valid only for the named task; a materially new task requires a new
+choice. If the current request already explicitly selects a mode, do not ask again.
+Answer-only requests that need no project tools do not require the gate.
+
+Delegation consent does not waive the separate cost gate. A protected, higher-cost,
+or unknown-cost model still requires model-specific approval.
+
 ## Delegation decision
 
 Stay single-agent for small tasks, sequential tasks, shared mutable state, or work

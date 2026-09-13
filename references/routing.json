@@ -12,6 +12,25 @@
     "higher_service_tier_action": "require_user_approval",
     "approval_scope": "single_task_single_model"
   },
+  "execution_mode_consent": {
+    "required_before_substantive_project_work": true,
+    "choice_scope": "single_task",
+    "no_response_action": "wait",
+    "skip_when_user_already_selected_mode": true,
+    "skip_for_answer_only_without_project_tools": true,
+    "allowed_before_consent": [
+      "read_instruction_files",
+      "locate_repository",
+      "inspect_worktree_status",
+      "shallow_file_inventory"
+    ],
+    "forbidden_before_consent": [
+      "inspect_feature_implementation",
+      "run_tests",
+      "edit_files",
+      "external_actions"
+    ]
+  },
   "runtimes": {
     "codex": {
       "manager": {

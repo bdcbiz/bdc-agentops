@@ -5,6 +5,9 @@ delegation, permission, or usage behavior.
 
 Repository invariants:
 
+- Project work requiring tools must stop after shallow bootstrap and obtain an
+  explicit per-task Solo or Delegated economy choice before substantive work.
+- Delegation-mode consent and protected-model approval are separate decisions.
 - Economy-first routing remains the default.
 - Protected, higher-cost, and unknown-cost model selection requires explicit,
   task-specific user approval before execution.

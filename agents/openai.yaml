@@ -1,6 +1,6 @@
 interface:
   display_name: "BDC AgentOps"
   short_description: "Control agent routing, cost, and permissions"
-  default_prompt: "Use $bdc-agentops to route this work under BDC's economy-first cost policy."
+  default_prompt: "Use $bdc-agentops to present Solo versus Delegated economy before project work, then route the approved mode under BDC's cost policy."
 policy:
   allow_implicit_invocation: true

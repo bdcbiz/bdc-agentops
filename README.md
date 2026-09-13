@@ -1,8 +1,9 @@
 # BDC AgentOps
 
-BDC AgentOps is BDC's portable policy layer for AI coding workflows. It keeps a
-manager agent in control, delegates only when useful, and blocks expensive or
-unknown-cost model escalation until the user explicitly approves it.
+BDC AgentOps is BDC's portable policy layer for AI coding workflows. It asks the
+user to choose Solo or Delegated economy before substantive project work, keeps a
+manager agent in control, and blocks expensive or unknown-cost model escalation
+until the user explicitly approves it.
 
 The first release is intentionally configuration-first: it does not proxy model
 traffic, store secrets, or modify projects automatically.
@@ -18,6 +19,7 @@ traffic, store secrets, or modify projects automatically.
 - Delegation depth: 1
 - Attempts per worker: 2
 - File ownership: one writer per file
+- Execution mode: explicit per-task choice before substantive work
 
 Protected models are not called merely because a task is difficult. The manager
 must first explain the exact model, reason, expected benefit, cheaper alternative,
@@ -35,19 +37,23 @@ references/task-contract.json    Worker handoff contract
 schemas/usage-ledger.schema.json Usage and audit schema
 templates/                       AGENTS.md and CLAUDE.md integration snippets
 scripts/validate.py              Dependency-free policy validation
+scripts/install.py               Idempotent global/project installer
 tests/test_validate.py           Safety-invariant tests
 ```
 
-## Use without modifying a project
+## Install
 
-Keep this repository outside application repositories and load or install the
-skill from this folder in the agent runtime. Nothing in this repository edits an
-application on its own.
+The repository does not activate merely because it exists on disk. Install global
+Codex guidance once, then install project adapters where Claude or explicit
+repository enforcement is required:
 
-When a project should permanently opt in, copy the relevant text from
-`templates/AGENTS.snippet.md` or `templates/CLAUDE.snippet.md` into that project's
-instruction file. That integration is an explicit project change, not an
-automatic action.
+```bash
+python3 scripts/install.py --global-codex
+python3 scripts/install.py --project /path/to/project --runtime both
+```
+
+The installer uses marked blocks and is idempotent. It preserves surrounding
+instructions and updates only its own block and installed skill files.
 
 ## Validate
 

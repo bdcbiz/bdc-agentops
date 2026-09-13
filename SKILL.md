@@ -1,6 +1,6 @@
 ---
 name: bdc-agentops
-description: Govern model choice, subagent delegation, permissions, and usage across AI coding workflows. Use before selecting models, spawning agents, parallelizing work, or escalating model cost.
+description: Govern execution-mode consent, model choice, delegation, permissions, and usage across AI coding workflows. Use at the start of project work before substantive inspection or tools, and before selecting models, spawning agents, parallelizing work, or escalating cost.
 ---
 
 # BDC AgentOps
@@ -13,6 +13,25 @@ agent. Read [runtime-adapters.md](references/runtime-adapters.md) only when mapp
 roles to a specific runtime. Load `routing.json` when enforcing or changing model
 and concurrency limits.
 
+## Execution-mode consent gate
+
+After reading applicable instruction files and doing only a shallow bootstrap,
+stop before substantive inspection, tests, edits, or external actions. Present:
+
+- **Solo:** the current approved manager, expected tradeoff, and no subagents.
+- **Delegated economy:** every proposed worker, model/role, bounded task, expected
+  benefit, and relative extra usage.
+- **Recommendation:** one option and a short reason.
+
+Wait for the user's explicit choice. Silence is not consent. The choice applies to
+the named task only. Skip this question only when the user already selected Solo or
+Delegated for the current task, or when the answer needs no project tools.
+
+Before consent, tools are limited to reading instruction files, locating the
+repository, checking worktree status, and a shallow file inventory needed to make
+the options concrete. Do not inspect feature implementation, run tests, or begin
+the requested work.
+
 ## Default behavior
 
 Use the single-agent fast path unless delegation has a clear, bounded benefit.
@@ -23,6 +42,9 @@ Never start `gpt-6-astra`, a higher-cost service tier, or a model with unknown
 relative cost without explicit approval for the exact model and task. Before
 asking, state the need, expected benefit, cheaper fallback, and maximum attempts.
 Silence and approval from another task are not approval.
+
+Delegation consent and cost-escalation approval are separate. Choosing Delegated
+does not authorize a protected or unknown-cost model.
 
 ## Delegation workflow
 
