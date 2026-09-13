@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/agent-governor/usage-ledger-v1.json",
+  "title": "Agent usage ledger",
+  "type": "object",
+  "required": ["version", "task_id", "manager", "agents"],
+  "properties": {
+    "version": { "const": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "manager": { "$ref": "#/$defs/agentUsage" },
+    "agents": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/agentUsage" }
+    },
+    "billing_confirmed": { "type": "boolean", "default": false }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "nullableCount": { "type": ["integer", "null"], "minimum": 0 },
+    "agentUsage": {
+      "type": "object",
+      "required": ["agent_id", "role", "model", "source", "status", "attempts"],
+      "properties": {
+        "agent_id": { "type": "string", "minLength": 1 },
+        "role": { "type": "string", "minLength": 1 },
+        "model": { "type": "string", "minLength": 1 },
+        "source": { "enum": ["measured", "estimated", "unavailable"] },
+        "status": { "enum": ["complete", "blocked", "failed", "cancelled"] },
+        "attempts": { "type": "integer", "minimum": 1 },
+        "elapsed_ms": { "$ref": "#/$defs/nullableCount" },
+        "input_tokens": { "$ref": "#/$defs/nullableCount" },
+        "cached_tokens": { "$ref": "#/$defs/nullableCount" },
+        "output_tokens": { "$ref": "#/$defs/nullableCount" },
+        "reasoning_tokens": { "$ref": "#/$defs/nullableCount" },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

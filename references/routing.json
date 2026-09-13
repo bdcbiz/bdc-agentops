@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "default_mode": "economy",
+  "limits": {
+    "max_concurrent_workers": 2,
+    "max_delegation_depth": 1,
+    "max_attempts_per_worker": 2,
+    "one_writer_per_file": true
+  },
+  "cost_policy": {
+    "unknown_cost_action": "require_user_approval",
+    "higher_service_tier_action": "require_user_approval",
+    "approval_scope": "single_task_single_model"
+  },
+  "runtimes": {
+    "codex": {
+      "manager": {
+        "model": "gpt-5.6-sol",
+        "approval_required": false
+      },
+      "workers": {
+        "discovery": {
+          "model": "gpt-5.6-luna",
+          "approval_required": false
+        },
+        "implementation": {
+          "model": "gpt-5.6-terra",
+          "approval_required": false
+        },
+        "critical_escalation": {
+          "model": "gpt-6-astra",
+          "approval_required": true
+        }
+      },
+      "unlisted_model_action": "require_user_approval"
+    },
+    "claude": {
+      "manager": { "model": "current_configured_model" },
+      "worker": { "model": "runtime_verified_cheaper_model" },
+      "model_switch_action": "require_user_approval_when_higher_or_unknown_cost"
+    },
+    "generic": {
+      "manager": { "model": "current_configured_model" },
+      "model_switch_action": "require_user_approval_when_higher_or_unknown_cost"
+    }
+  },
+  "delegation": {
+    "default": "single_agent",
+    "allow_when": [
+      "independent_bounded_deliverables",
+      "material_specialist_risk_reduction",
+      "justified_independent_review"
+    ],
+    "deny_when": [
+      "small_task",
+      "strictly_sequential_work",
+      "shared_mutable_state_without_isolation",
+      "coordination_cost_exceeds_expected_benefit"
+    ]
+  },
+  "permissions": {
+    "worker_default": "read_only",
+    "reviewer": "read_only",
+    "writer_requires_explicit_file_scope": true,
+    "root_only_actions": [
+      "commit",
+      "push",
+      "merge",
+      "deploy",
+      "material_delete",
+      "secret_access",
+      "external_communication"
+    ]
+  }
+}

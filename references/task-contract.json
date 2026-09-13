@@ -1,0 +1,30 @@
+{
+  "contract_version": 1,
+  "task_id": "required",
+  "role": "discovery|implementation|review",
+  "goal": "required bounded outcome",
+  "requirement_ids": [],
+  "allowed_files": [],
+  "read_only_paths": [],
+  "forbidden_actions": [
+    "spawn_subagent",
+    "change_model",
+    "expand_scope",
+    "commit",
+    "push",
+    "deploy"
+  ],
+  "acceptance_criteria": [],
+  "required_evidence": [
+    "files and relevant lines",
+    "commands and results",
+    "assumptions and limitations"
+  ],
+  "max_attempts": 2,
+  "handoff": {
+    "status": "complete|blocked",
+    "changed_files": [],
+    "evidence": [],
+    "unresolved_items": []
+  }
+}
